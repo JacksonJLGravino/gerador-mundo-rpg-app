@@ -30,13 +30,13 @@ const styles = StyleSheet.create({
     backgroundColor: colors.LIGHT,
     marginTop: 20,
     borderRadius: 8,
-    borderWidth: 2,
-    borderColor: colors.DARK,
+    borderWidth: 1,
+    borderColor: colors.GREEN_200,
   },
   title: {
     fontWeight: "bold",
     fontSize: 20,
-    color: colors.BACKGROUND,
+    color: colors.ORANGE_100,
   },
   desc: {
     color: colors.DARK,

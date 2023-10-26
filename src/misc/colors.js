@@ -1,8 +1,10 @@
 export default {
-  BACKGROUND: "#BF9B7A",
-  SECONDARY: "#625585",
-  DANGER: "#9D2B27",
-  POSITIVE: "#7ABF83",
-  LIGHT: "#E0CCBA",
-  DARK: "#1A1723",
+  LIGHT: "#ebeeed",
+  DARK: "#385053",
+  ORANGE_100: "#ef9026",
+  ORANGE_200: "#e0682b",
+  BLUE_100: "#48cbf4",
+  BLUE_200: "#1b9ce9",
+  GREEN_100: "#8bd630",
+  GREEN_200: "#6fbb36",
 };

@@ -9,6 +9,7 @@ import World from "../../components/World";
 import { useNavigation } from "@react-navigation/native";
 import { useWorlds } from "../../contexts/WorldProvider";
 import BackgroundView from "../../components/backgroundView";
+import Banner from "../../ads/Banner";
 
 export default function Home() {
   const [modalVisible, setModalVisible] = useState(false);
@@ -146,8 +147,8 @@ export default function Home() {
           <BtnRound
             btnName="plus"
             onPress={() => setModalVisible(true)}
-            colorInside={colors.LIGHT}
-            backgroundColor={colors.SECONDARY}
+            colorInside={colors.DARK}
+            backgroundColor={colors.BLUE_200}
           />
         </View>
       </View>
@@ -157,8 +158,6 @@ export default function Home() {
         closeModal={() => setModalVisible(false)}
         onSubmit={handleOnSubmit}
       />
-
-      <View style={{ height: 80, backgroundColor: colors.BACKGROUND }}></View>
     </>
   );
 }
@@ -166,13 +165,13 @@ export default function Home() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: colors.BACKGROUND,
+    backgroundColor: colors.DARK,
     padding: 20,
   },
   textHeader: {
     fontWeight: "bold",
     fontSize: 24,
-    color: colors.DARK,
+    color: colors.LIGHT,
   },
   btnView: {
     position: "absolute",

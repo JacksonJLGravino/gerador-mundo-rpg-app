@@ -8,7 +8,12 @@ export default function TextRandom({ text, onPress, title }) {
     <View style={{ paddingHorizontal: 8 }}>
       <View style={styles.header}>
         <Text style={styles.headerText}>{title}</Text>
-        <BorderlessButton size={20} btnName="dice" onPress={onPress} />
+        <BorderlessButton
+          size={20}
+          btnName="dice"
+          onPress={onPress}
+          color={colors.LIGHT}
+        />
       </View>
       <Text style={styles.text}>{text}</Text>
     </View>
@@ -25,9 +30,9 @@ const styles = StyleSheet.create({
   headerText: {
     fontWeight: "bold",
     textTransform: "uppercase",
-    color: colors.DARK,
+    color: colors.ORANGE_100,
   },
   text: {
-    color: colors.DARK,
+    color: colors.LIGHT,
   },
 });

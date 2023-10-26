@@ -8,6 +8,7 @@ import colors from "../../misc/colors";
 import BorderlessButton from "../../components/BorderlessButton";
 import InfoText from "../../components/InfoText";
 import { useNavigation } from "@react-navigation/native";
+import Banner from "../../ads/Banner";
 
 const formatDate = (time) => {
   const date = new Date(time);
@@ -148,135 +149,140 @@ export default function WorldDetails(props) {
   };
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.date}>
-        {world.isUpdated
-          ? `atualizado em ${formatDate(world.time)}`
-          : `criado em ${formatDate(world.time)}`}
-      </Text>
+    <>
+      <View style={styles.container}>
+        <Text style={styles.date}>
+          {world.isUpdated
+            ? `atualizado em ${formatDate(world.time)}`
+            : `criado em ${formatDate(world.time)}`}
+        </Text>
 
-      <View style={styles.header}>
-        <BorderlessButton
-          btnName="arrow-left"
-          size={24}
-          color={colors.DARK}
-          onPress={navigation.goBack}
+        <View style={styles.header}>
+          <BorderlessButton
+            btnName="arrow-left"
+            size={24}
+            color={colors.LIGHT}
+            onPress={navigation.goBack}
+          />
+          <Text style={styles.headerText}>{world.worldName}</Text>
+          <View style={{ width: 24 }} />
+        </View>
+
+        <ScrollView>
+          <InfoText title="Descrição:" desc={world.worldDescription} />
+
+          <View style={styles.generatorContainer}>
+            <Text style={styles.legend}>Geografia:</Text>
+            <InfoText title="Tipo de Terreno:" desc={world.terreno} />
+            <InfoText title="Clima:" desc={world.clima} />
+            <InfoText
+              title="Característica Geográfica Especial:"
+              desc={world.caracteristica}
+            />
+          </View>
+
+          <View style={styles.generatorContainer}>
+            <Text style={styles.legend}>Sociedade:</Text>
+            <InfoText title="Tipo de Sociedade:" desc={world.sociedade} />
+            <InfoText title="Organização Política:" desc={world.dominante} />
+            <InfoText title="Raça Dominante:" desc={world.politica} />
+            <InfoText title="Raça Predominante:" desc={world.predominante} />
+            <InfoText
+              title="Relações Inter-raciais:"
+              desc={world.interRaciais}
+            />
+          </View>
+
+          <View style={styles.generatorContainer}>
+            <Text style={styles.legend}>Religião e Crença:</Text>
+            <InfoText title="Deidade:" desc={world.deidade} />
+            <InfoText
+              title="Principal Crença e Prática Religiosa:"
+              desc={world.crenca}
+            />
+            <InfoText
+              title="Relação entre as Religiões:"
+              desc={world.relacaoReligao}
+            />
+          </View>
+
+          <View style={styles.generatorContainer}>
+            <Text style={styles.legend}>Cultura e Tradições:</Text>
+            <InfoText title="Vestimenta Típica:" desc={world.vestimenta} />
+            <InfoText title="Comida e Bebida:" desc={world.comida} />
+            <InfoText title="Feriados e Festivais:" desc={world.festa} />
+          </View>
+
+          <View style={styles.generatorContainer}>
+            <Text style={styles.legend}>História de Fundo:</Text>
+            <InfoText
+              title="Evento Histórico Significativo:"
+              desc={world.evento}
+            />
+            <InfoText
+              title="Figura Histórica Importante:"
+              desc={world.personalidade}
+            />
+            <InfoText
+              title="Artefatos Mágicos ou Relíquias Antigas:"
+              desc={world.reliquia}
+            />
+          </View>
+
+          <View style={styles.generatorContainer}>
+            <Text style={styles.legend}>Política e Conflito:</Text>
+            <InfoText title="Principais Grupos Políticos:" desc={world.grupo} />
+            <InfoText title="Conflito em Andamento:" desc={world.conflito} />
+            <InfoText
+              title="Questão Política Importante:"
+              desc={world.questoes}
+            />
+          </View>
+
+          <View style={styles.generatorContainer}>
+            <Text style={styles.legend}>Ecologia e Criaturas:</Text>
+            <InfoText title="Criatura Lendária:" desc={world.criatura} />
+            <InfoText title="Vegetação Única:" desc={world.vegetacao} />
+            <InfoText title="Ecossistemas Únicos:" desc={world.ecossistema} />
+          </View>
+
+          <View style={styles.generatorContainer}>
+            <Text style={styles.legend}>Economia e Recursos:</Text>
+            <InfoText title="Principal Recurso Natural:" desc={world.recurso} />
+            <InfoText title="Moeda e Sistema Econômico:" desc={world.sistema} />
+          </View>
+
+          <View style={styles.generatorContainer}>
+            <Text style={styles.legend}>Tecnologia e Magia:</Text>
+            <InfoText title="Níveis de Tecnologia:" desc={world.nivel} />
+            <InfoText title="Sistema de Magia:" desc={world.magia} />
+          </View>
+        </ScrollView>
+
+        <View style={styles.buttons}>
+          <BtnRound
+            colorInside={colors.LIGHT}
+            backgroundColor={colors.BLUE_200}
+            btnName="pencil-alt"
+            onPress={openEditModal}
+          />
+          <BtnRound
+            backgroundColor={colors.ORANGE_200}
+            colorInside={colors.LIGHT}
+            btnName="trash"
+            onPress={displayDeleteAlert}
+          />
+        </View>
+
+        <GeneratorModal
+          isEdit={isEdit}
+          world={world}
+          closeModal={handleOnClose}
+          onSubmit={handleUpdate}
+          visible={showModal}
         />
-        <Text style={styles.headerText}>{world.worldName}</Text>
-        <View style={{ width: 24 }} />
       </View>
-
-      <ScrollView>
-        <InfoText title="Descrição:" desc={world.worldDescription} />
-
-        <View style={styles.generatorContainer}>
-          <Text style={styles.legend}>Geografia:</Text>
-          <InfoText title="Tipo de Terreno:" desc={world.terreno} />
-          <InfoText title="Clima:" desc={world.clima} />
-          <InfoText
-            title="Característica Geográfica Especial:"
-            desc={world.caracteristica}
-          />
-        </View>
-
-        <View style={styles.generatorContainer}>
-          <Text style={styles.legend}>Sociedade:</Text>
-          <InfoText title="Tipo de Sociedade:" desc={world.sociedade} />
-          <InfoText title="Organização Política:" desc={world.dominante} />
-          <InfoText title="Raça Dominante:" desc={world.politica} />
-          <InfoText title="Raça Predominante:" desc={world.predominante} />
-          <InfoText title="Relações Inter-raciais:" desc={world.interRaciais} />
-        </View>
-
-        <View style={styles.generatorContainer}>
-          <Text style={styles.legend}>Religião e Crença:</Text>
-          <InfoText title="Deidade:" desc={world.deidade} />
-          <InfoText
-            title="Principal Crença e Prática Religiosa:"
-            desc={world.crenca}
-          />
-          <InfoText
-            title="Relação entre as Religiões:"
-            desc={world.relacaoReligao}
-          />
-        </View>
-
-        <View style={styles.generatorContainer}>
-          <Text style={styles.legend}>Cultura e Tradições:</Text>
-          <InfoText title="Vestimenta Típica:" desc={world.vestimenta} />
-          <InfoText title="Comida e Bebida:" desc={world.comida} />
-          <InfoText title="Feriados e Festivais:" desc={world.festa} />
-        </View>
-
-        <View style={styles.generatorContainer}>
-          <Text style={styles.legend}>História de Fundo:</Text>
-          <InfoText
-            title="Evento Histórico Significativo:"
-            desc={world.evento}
-          />
-          <InfoText
-            title="Figura Histórica Importante:"
-            desc={world.personalidade}
-          />
-          <InfoText
-            title="Artefatos Mágicos ou Relíquias Antigas:"
-            desc={world.reliquia}
-          />
-        </View>
-
-        <View style={styles.generatorContainer}>
-          <Text style={styles.legend}>Política e Conflito:</Text>
-          <InfoText title="Principais Grupos Políticos:" desc={world.grupo} />
-          <InfoText title="Conflito em Andamento:" desc={world.conflito} />
-          <InfoText
-            title="Questão Política Importante:"
-            desc={world.questoes}
-          />
-        </View>
-
-        <View style={styles.generatorContainer}>
-          <Text style={styles.legend}>Ecologia e Criaturas:</Text>
-          <InfoText title="Criatura Lendária:" desc={world.criatura} />
-          <InfoText title="Vegetação Única:" desc={world.vegetacao} />
-          <InfoText title="Ecossistemas Únicos:" desc={world.ecossistema} />
-        </View>
-
-        <View style={styles.generatorContainer}>
-          <Text style={styles.legend}>Economia e Recursos:</Text>
-          <InfoText title="Principal Recurso Natural:" desc={world.recurso} />
-          <InfoText title="Moeda e Sistema Econômico:" desc={world.sistema} />
-        </View>
-
-        <View style={styles.generatorContainer}>
-          <Text style={styles.legend}>Tecnologia e Magia:</Text>
-          <InfoText title="Níveis de Tecnologia:" desc={world.nivel} />
-          <InfoText title="Sistema de Magia:" desc={world.magia} />
-        </View>
-      </ScrollView>
-
-      <View style={styles.buttons}>
-        <BtnRound
-          colorInside={colors.LIGHT}
-          backgroundColor={colors.SECONDARY}
-          btnName="pencil-alt"
-          onPress={openEditModal}
-        />
-        <BtnRound
-          backgroundColor={colors.DANGER}
-          colorInside={colors.LIGHT}
-          btnName="trash"
-          onPress={displayDeleteAlert}
-        />
-      </View>
-
-      <GeneratorModal
-        isEdit={isEdit}
-        world={world}
-        closeModal={handleOnClose}
-        onSubmit={handleUpdate}
-        visible={showModal}
-      />
-    </View>
+    </>
   );
 }
 
@@ -284,7 +290,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 20,
-    backgroundColor: colors.BACKGROUND,
+    backgroundColor: colors.DARK,
   },
   date: {
     position: "absolute",
@@ -302,6 +308,7 @@ const styles = StyleSheet.create({
   headerText: {
     fontSize: 24,
     fontWeight: "bold",
+    color: colors.LIGHT,
   },
   buttons: {
     position: "absolute",
@@ -316,15 +323,15 @@ const styles = StyleSheet.create({
     padding: 10,
     borderRadius: 8,
     borderWidth: 1,
-    borderColor: colors.SECONDARY,
+    borderColor: colors.BLUE_200,
     gap: 4,
   },
   legend: {
     position: "absolute",
     top: -11,
     left: 10,
-    backgroundColor: colors.BACKGROUND,
+    backgroundColor: colors.DARK,
     borderRadius: 100,
-    color: colors.SECONDARY,
+    color: colors.LIGHT,
   },
 });

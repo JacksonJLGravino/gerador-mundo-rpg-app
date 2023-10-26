@@ -33,7 +33,7 @@ const styles = StyleSheet.create({
     paddingVertical: 8,
     borderRadius: 8,
     backgroundColor: colors.LIGHT,
-    borderColor: colors.SECONDARY,
+    borderColor: colors.ORANGE_100,
     color: colors.DARK,
 
     shadowColor: "#000",

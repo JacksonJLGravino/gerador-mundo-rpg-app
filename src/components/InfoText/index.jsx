@@ -17,9 +17,9 @@ const styles = StyleSheet.create({
   },
   title: {
     fontWeight: "bold",
-    color: colors.DARK,
+    color: colors.ORANGE_100,
   },
   desc: {
-    color: colors.DARK,
+    color: colors.LIGHT,
   },
 });

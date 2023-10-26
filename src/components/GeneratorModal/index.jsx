@@ -367,7 +367,7 @@ export default function GeneratorModal({
             btnName="arrow-left"
             onPress={handleCloseModal}
             size={24}
-            color={colors.DARK}
+            color={colors.LIGHT}
           />
         </View>
 
@@ -804,14 +804,14 @@ export default function GeneratorModal({
         <View style={styles.buttons}>
           <BtnRound
             colorInside={colors.LIGHT}
-            backgroundColor={colors.SECONDARY}
+            backgroundColor={colors.BLUE_200}
             btnName="dice-d20"
             onPress={handleRandom}
           />
           {worldName.trim() ? (
             <BtnRound
-              backgroundColor={colors.POSITIVE}
-              colorInside={colors.DARK}
+              backgroundColor={colors.GREEN_200}
+              colorInside={colors.LIGHT}
               btnName="save"
               onPress={handleSubmit}
             />
@@ -826,7 +826,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 20,
-    backgroundColor: colors.BACKGROUND,
+    backgroundColor: colors.DARK,
   },
   generatorContainer: {
     marginTop: 8,
@@ -834,16 +834,16 @@ const styles = StyleSheet.create({
     padding: 10,
     borderRadius: 8,
     borderWidth: 1,
-    borderColor: colors.SECONDARY,
+    borderColor: colors.BLUE_200,
     gap: 4,
   },
   legend: {
     position: "absolute",
     top: -11,
     left: 10,
-    backgroundColor: colors.BACKGROUND,
+    backgroundColor: colors.DARK,
     borderRadius: 100,
-    color: colors.SECONDARY,
+    color: colors.LIGHT,
   },
   buttons: {
     position: "absolute",
